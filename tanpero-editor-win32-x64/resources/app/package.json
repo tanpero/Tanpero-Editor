@@ -1,0 +1,20 @@
+{
+  "name": "tanpero-editor",
+  "version": "1.0.0",
+  "description": "Tanpero Editor Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+	"build": "electron-packager ."
+  },
+  "keywords": [
+    "editor"
+  ],
+  "author": "Tanpero",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "code-mirror": "^4.0.1",
+    "codemirror": "^5.46.0",
+    "electron": "^4.1.5"
+  }
+}

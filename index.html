@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tanpero Editor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+</head>
+<body>
+    <button id="bold">加粗</button>
+    <button id="italic">斜体</button>
+    <button id="underline">下划线</button>
+	<hr>
+    <div id="main" contenteditable="true"></div>
+    <script>
+        const editorRecords = {
+            basicStyleList: ["bold", "italic", "underline"],
+            fontsFamilies: ["宋体", "楷体", "黑体", "微软雅黑"]
+        };
+
+        const editorModel = require("./editorModel");
+
+        const Editor = require("./editor");
+
+        const editor = new Editor(document.getElementById("main"), editorModel);
+
+        const bold = document.getElementById("bold");
+        const italic = document.getElementById("italic");
+        const underline = document.getElementById("underline");
+
+        bold.addEventListener("click", () => editor.setBold(), false);
+        italic.addEventListener("click", () => editor.setItalic(), false);
+        underline.addEventListener("click", () => editor.setUnderline(), false);
+    </script>
+</body>
+</html>
