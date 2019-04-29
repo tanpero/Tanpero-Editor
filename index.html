@@ -25,14 +25,13 @@
         <option value="center">居中对齐</option>
         <option value="full">两端对齐</option>
     </select>
+    <br>
+    <button id="undo">撤销</button>
+    <button id="redo">重做</button>
     <hr>
     <br>
     <div id="main" contenteditable="true"></div>
     <script>
-        const editorRecords = {
-            basicStyleList: ["bold", "italic", "underline"],
-            fontsFamilies: ["宋体", "楷体", "黑体", "微软雅黑"]
-        };
 
         const editorModel = require("./editorModel");
 
@@ -65,6 +64,11 @@
 
         const justify = document.getElementById("justify");
         justify.addEventListener("change", (event) => editor.justify(event.target.value));
+
+        const undo = document.getElementById("undo");
+        const redo = document.getElementById("redo");
+        undo.addEventListener("click", () => editor.undo());
+        redo.addEventListener("click", () => editor.redo());
     </script>
 </body>
 </html>

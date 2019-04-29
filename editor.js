@@ -64,6 +64,16 @@ class Editor {
         this.editorModel.justify(type);
         return this;
     }
+
+    undo () {
+        this.editorModel.undo();
+        return this;
+    }
+
+    redo () {
+        this.editorModel.redo();
+        return this;
+    }
 };
 
 module.exports = Editor;

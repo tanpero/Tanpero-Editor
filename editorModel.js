@@ -64,6 +64,14 @@ const editorModel = {
 		}
 	},
 
+	redo () {
+		document.execCommand("redo");
+	},
+
+	undo () {
+		document.execCommand("undo");
+	},
+
 	adjustList () {
 		let lists = document.querySelectorAll("ol, ul");
 		for  (let i = 0; i < lists.length; i++)  {
