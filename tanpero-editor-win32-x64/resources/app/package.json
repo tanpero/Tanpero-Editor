@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-	"build": "electron-packager ."
+    "build": "electron-packager . --overwrite"
   },
   "keywords": [
     "editor"
@@ -15,6 +15,7 @@
   "dependencies": {
     "code-mirror": "^4.0.1",
     "codemirror": "^5.46.0",
+    "color-picker": "0.0.1",
     "electron": "^4.1.5"
   }
 }

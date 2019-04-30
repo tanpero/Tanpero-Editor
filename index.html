@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <button id="bold">加粗</button>
+    <!--<button id="bold">加粗</button>
     <button id="italic">斜体</button>
     <button id="underline">下划线</button>
     <button id="strike">删除线</button>
@@ -27,7 +27,9 @@
     </select>
     <br>
     <button id="undo">撤销</button>
-    <button id="redo">重做</button>
+    <button id="redo">重做</button>-->
+    <nav id="toolbar"></nav>
+    <br>
     <hr>
     <br>
     <div id="main" contenteditable="true"></div>
@@ -39,7 +41,10 @@
 
         const editor = new Editor(document.getElementById("main"), editorModel);
 
-        const bold = document.getElementById("bold");
+        const EditorView = require("./editorView");
+        const editorView = new EditorView(document.getElementById("toolbar"));
+
+        /*const bold = document.getElementById("bold");
         const italic = document.getElementById("italic");
         const underline = document.getElementById("underline");
         const strike = document.getElementById("strike");
@@ -50,9 +55,55 @@
         underline.addEventListener("click", () => editor.setUnderline());
         strike.addEventListener("click", () => editor.setStrike());
         subscript.addEventListener("click", () => editor.setSubscript());
-        superscript.addEventListener("click", () => editor.setSuperscript());
+        superscript.addEventListener("click", () => editor.setSuperscript());*/
 
-        const increaseFontSize = document.getElementById("increase-font-size");
+        const iconAssets = require("./iconAssets");
+
+        editorView.addButton({
+            name: "bold",
+            event: "click",
+            action (el) {
+                editor.setBold ();
+                el.toggleState();
+            },
+            isReactive: true,
+            icon: iconAssets.bold,
+        });
+
+        editorView.addButton({
+            name: "italic",
+            event: "click",
+            action (el) {
+                editor.setItalic();
+                el.toggleState();
+            },
+            isReactive: true,
+            icon: iconAssets.italic,
+        });
+
+        editorView.addButton({
+            name: "underline",
+            event: "click",
+            action (el) {
+                editor.setUnderline();
+                el.toggleState();
+            },
+            isReactive: true,
+            icon: iconAssets.underline,
+        });
+
+        editorView.addButton({
+            name: "strike",
+            event: "click",
+            action (el) {
+                editor.setStrike();
+                el.toggleState();
+            },
+            isReactive: true,
+            icon: iconAssets.strike,
+        });
+
+        /*const increaseFontSize = document.getElementById("increase-font-size");
         const decreaseFontSize = document.getElementById("decrease-font-size");
         increaseFontSize.addEventListener("click", () => editor.increaseFontSize());
         decreaseFontSize.addEventListener("click", () => editor.decreaseFontSize());
@@ -63,7 +114,7 @@
         backgroundColorPicker.addEventListener("input", (event) => editor.setBackgroundColor(event.target.value));
 
         const justify = document.getElementById("justify");
-        justify.addEventListener("change", (event) => editor.justify(event.target.value));
+        justify.addEventListener("change", (event) => editor.justify(event.target.value));*/
 
         const undo = document.getElementById("undo");
         const redo = document.getElementById("redo");

@@ -12,13 +12,26 @@
     <button id="bold">加粗</button>
     <button id="italic">斜体</button>
     <button id="underline">下划线</button>
-	<hr>
+    <button id="strike">删除线</button>
+    <button id="subscript">下标</button>
+    <button id="superscript">上标</button>
+    <button id="decrease-font-size">减小字号</button>
+    <button id="increase-font-size">增大字号</button>
+    <input type="color" id="font-color-picker" />
+    <input type="color" id="background-color-picker"/>
+    <select id="justify">
+        <option value="left">左对齐</option>
+        <option value="right">右对齐</option>
+        <option value="center">居中对齐</option>
+        <option value="full">两端对齐</option>
+    </select>
+    <br>
+    <button id="undo">撤销</button>
+    <button id="redo">重做</button>
+    <hr>
+    <br>
     <div id="main" contenteditable="true"></div>
     <script>
-        const editorRecords = {
-            basicStyleList: ["bold", "italic", "underline"],
-            fontsFamilies: ["宋体", "楷体", "黑体", "微软雅黑"]
-        };
 
         const editorModel = require("./editorModel");
 
@@ -29,10 +42,33 @@
         const bold = document.getElementById("bold");
         const italic = document.getElementById("italic");
         const underline = document.getElementById("underline");
+        const strike = document.getElementById("strike");
+        const subscript = document.getElementById("subscript");
+        const superscript = document.getElementById("superscript");
+        bold.addEventListener("click", () => editor.setBold());
+        italic.addEventListener("click", () => editor.setItalic());
+        underline.addEventListener("click", () => editor.setUnderline());
+        strike.addEventListener("click", () => editor.setStrike());
+        subscript.addEventListener("click", () => editor.setSubscript());
+        superscript.addEventListener("click", () => editor.setSuperscript());
 
-        bold.addEventListener("click", () => editor.setBold(), false);
-        italic.addEventListener("click", () => editor.setItalic(), false);
-        underline.addEventListener("click", () => editor.setUnderline(), false);
+        const increaseFontSize = document.getElementById("increase-font-size");
+        const decreaseFontSize = document.getElementById("decrease-font-size");
+        increaseFontSize.addEventListener("click", () => editor.increaseFontSize());
+        decreaseFontSize.addEventListener("click", () => editor.decreaseFontSize());
+
+        const fontColorPicker = document.getElementById("font-color-picker");
+        const backgroundColorPicker = document.getElementById("background-color-picker");
+        fontColorPicker.addEventListener("input", (event) => editor.setFontColor(event.target.value));
+        backgroundColorPicker.addEventListener("input", (event) => editor.setBackgroundColor(event.target.value));
+
+        const justify = document.getElementById("justify");
+        justify.addEventListener("change", (event) => editor.justify(event.target.value));
+
+        const undo = document.getElementById("undo");
+        const redo = document.getElementById("redo");
+        undo.addEventListener("click", () => editor.undo());
+        redo.addEventListener("click", () => editor.redo());
     </script>
 </body>
 </html>

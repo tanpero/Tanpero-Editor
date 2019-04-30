@@ -3,6 +3,8 @@ class Editor {
     constructor (element, editorModel) {
         const _editor = element;
         this.editorModel = editorModel;
+        document.execCommand("styleWithCSS");
+        _editor.focus();
     }
 
     setBold () {
